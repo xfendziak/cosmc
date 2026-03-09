@@ -87,7 +87,7 @@
             padding: 24px;
             transition: 0.4s var(--ease);
             position: relative;
-            display: block; /* Domyślnie widoczne */
+            display: block;
         }
 
         .resource-card:hover {
@@ -178,63 +178,66 @@
     </header>
 
     <main class="resources-grid" id="resource-container">
-        <div class="resource-card" data-category="sfx">
-            <span class="tag">SFX</span>
-            <div class="wave-preview">
-                <button class="play-btn" onclick="previewAudio('link_do_dzwieku.mp3', this)">▶</button>
-            </div>
-            <div class="resource-info">
-                <h3>Whoosh Main</h3>
-                <p style="font-size: 0.8rem; opacity: 0.5;">Czysty efekt przejścia typu whoosh.</p>
-            </div>
-            <a href="link_do_pliku.wav" download class="download-link">
-                <button class="download-btn">Pobierz .WAV</button>
-            </a>
-        </div>
-
-        <div class="resource-card" data-category="animacje">
-            <span class="tag">Animacje</span>
-            <div class="wave-preview" style="background: rgba(255,255,255,0.03)">
-                <span style="font-size: 0.7rem; opacity: 0.4;">Video Preview</span>
-            </div>
-            <div class="resource-info">
-                <h3>Glitch Overlay</h3>
-                <p style="font-size: 0.8rem; opacity: 0.5;">Nakładka wideo z efektem błędu.</p>
-            </div>
-            <a href="link_do_pliku.mp4" download class="download-link">
-                <button class="download-btn">Pobierz .MP4</button>
-            </a>
-        </div>
-
-        <div class="resource-card" data-category="muzyka">
-            <span class="tag">Muzyka</span>
-            <div class="wave-preview">
-                <button class="play-btn" onclick="previewAudio('link_do_muzyki.mp3', this)">▶</button>
-            </div>
-            <div class="resource-info">
-                <h3>Lo-Fi Chill Beat</h3>
-                <p style="font-size: 0.8rem; opacity: 0.5;">Idealne podkład pod commentary.</p>
-            </div>
-            <a href="link_do_pliku.mp3" download class="download-link">
-                <button class="download-btn">Pobierz .MP3</button>
-            </a>
-        </div>
-    </main>
+        </main>
 
     <script>
+        const container = document.getElementById('resource-container');
+        
+        // Dane do wygenerowania (9 elementów na kategorię)
+        const categories = [
+            { id: 'sfx', label: 'SFX', ext: '.WAV' },
+            { id: 'muzyka', label: 'Muzyka', ext: '.MP3' },
+            { id: 'animacje', label: 'Animacje', ext: '.MP4' },
+            { id: 'fonty', label: 'Fonty', ext: '.TTF' },
+            { id: 'loga', label: 'Loga', ext: '.PNG' },
+            { id: 'zdjęcia', label: 'Zdjęcia', ext: '.JPG' }
+        ];
+
+        // Generowanie kart
+        categories.forEach(cat => {
+            for (let i = 1; i <= 9; i++) {
+                const card = document.createElement('div');
+                card.className = 'resource-card';
+                card.setAttribute('data-category', cat.id);
+                
+                let previewContent = '';
+                if (cat.id === 'sfx' || cat.id === 'muzyka') {
+                    previewContent = `<button class="play-btn" onclick="previewAudio('link_do_pliku.mp3', this)">▶</button>`;
+                } else if (cat.id === 'fonty') {
+                    previewContent = `<span style="font-size: 1.2rem; font-weight: bold;">Abc 123</span>`;
+                } else {
+                    previewContent = `<span style="font-size: 0.7rem; opacity: 0.4;">Podgląd ${cat.label}</span>`;
+                }
+
+                card.innerHTML = `
+                    <span class="tag">${cat.label}</span>
+                    <div class="wave-preview">
+                        ${previewContent}
+                    </div>
+                    <div class="resource-info">
+                        <h3>${cat.label} Nazwa ${i}</h3>
+                        <p style="font-size: 0.8rem; opacity: 0.5;">Przykładowy opis zasobu nr ${i}.</p>
+                    </div>
+                    <a href="#" download class="download-link">
+                        <button class="download-btn">Pobierz ${cat.ext}</button>
+                    </a>
+                `;
+                container.appendChild(card);
+            }
+        });
+
         // --- LOGIKA FILTROWANIA ---
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.resource-card');
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Zmiana aktywnego przycisku
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
                 const filterValue = btn.getAttribute('data-filter');
+                const allCards = document.querySelectorAll('.resource-card');
 
-                cards.forEach(card => {
+                allCards.forEach(card => {
                     if (filterValue === 'wszystko' || card.getAttribute('data-category') === filterValue) {
                         card.style.display = 'block';
                     } else {
