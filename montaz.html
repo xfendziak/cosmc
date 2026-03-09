@@ -10,7 +10,7 @@
             --bg-color: #050505;
             --card-bg: #0a0a0a;
             --text-color: #ededed;
-            --accent: #8b5cf6; /* Fioletowy z Twojej inspiracji */
+            --accent: #8b5cf6; 
             --border-color: rgba(255, 255, 255, 0.08);
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -24,11 +24,11 @@
             background-image: 
                 linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 40px 40px; /* Efekt siatki w tle */
+            background-size: 40px 40px; 
             padding-bottom: 100px;
+            min-height: 100vh;
         }
 
-        /* --- NAGŁÓWEK --- */
         header {
             padding: 80px 20px 40px;
             text-align: center;
@@ -48,7 +48,6 @@
         }
         .back-link:hover { opacity: 1; transform: translateX(-5px); }
 
-        /* --- FILTRY (Z Twojej inspiracji) --- */
         .filters {
             display: flex;
             justify-content: center;
@@ -72,7 +71,6 @@
             color: #000;
         }
 
-        /* --- SIATKA ZASOBÓW --- */
         .resources-grid {
             max-width: 1200px;
             margin: 0 auto;
@@ -89,7 +87,7 @@
             padding: 24px;
             transition: 0.4s var(--ease);
             position: relative;
-            overflow: hidden;
+            display: block; /* Domyślnie widoczne */
         }
 
         .resource-card:hover {
@@ -106,6 +104,7 @@
             align-items: center;
             justify-content: center;
             border: 1px dashed rgba(139, 92, 246, 0.3);
+            position: relative;
         }
 
         .play-btn {
@@ -117,7 +116,11 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            border: none;
+            color: white;
+            transition: 0.2s;
         }
+        .play-btn:hover { transform: scale(1.1); }
 
         .resource-info h3 { font-size: 1.1rem; margin-bottom: 8px; }
         .tag {
@@ -132,8 +135,13 @@
             margin-bottom: 12px;
         }
 
-        .download-btn {
+        .download-link {
+            text-decoration: none;
+            display: block;
             margin-top: 20px;
+        }
+
+        .download-btn {
             width: 100%;
             padding: 12px;
             background: rgba(255,255,255,0.05);
@@ -159,30 +167,32 @@
         <p class="subtitle">Wszystko czego potrzebujesz do swojego kolejnego montażu.</p>
         
         <div class="filters">
-            <button class="filter-btn active">Wszystko</button>
-            <button class="filter-btn">SFX</button>
-            <button class="filter-btn">Muzyka</button>
-            <button class="filter-btn">Animacje</button>
-            <button class="filter-btn">Fonty</button>
-            <button class="filter-btn">Loga</button>
-            <button class="filter-btn">Zdjęcia</button>
+            <button class="filter-btn active" data-filter="wszystko">Wszystko</button>
+            <button class="filter-btn" data-filter="sfx">SFX</button>
+            <button class="filter-btn" data-filter="muzyka">Muzyka</button>
+            <button class="filter-btn" data-filter="animacje">Animacje</button>
+            <button class="filter-btn" data-filter="fonty">Fonty</button>
+            <button class="filter-btn" data-filter="loga">Loga</button>
+            <button class="filter-btn" data-filter="zdjęcia">Zdjęcia</button>
         </div>
     </header>
 
-    <main class="resources-grid">
-        <div class="resource-card">
+    <main class="resources-grid" id="resource-container">
+        <div class="resource-card" data-category="sfx">
             <span class="tag">SFX</span>
             <div class="wave-preview">
-                <div class="play-btn">▶</div>
+                <button class="play-btn" onclick="previewAudio('link_do_dzwieku.mp3', this)">▶</button>
             </div>
             <div class="resource-info">
                 <h3>Whoosh Main</h3>
                 <p style="font-size: 0.8rem; opacity: 0.5;">Czysty efekt przejścia typu whoosh.</p>
             </div>
-            <button class="download-btn">Pobierz .WAV</button>
+            <a href="link_do_pliku.wav" download class="download-link">
+                <button class="download-btn">Pobierz .WAV</button>
+            </a>
         </div>
 
-        <div class="resource-card">
+        <div class="resource-card" data-category="animacje">
             <span class="tag">Animacje</span>
             <div class="wave-preview" style="background: rgba(255,255,255,0.03)">
                 <span style="font-size: 0.7rem; opacity: 0.4;">Video Preview</span>
@@ -191,21 +201,77 @@
                 <h3>Glitch Overlay</h3>
                 <p style="font-size: 0.8rem; opacity: 0.5;">Nakładka wideo z efektem błędu.</p>
             </div>
-            <button class="download-btn">Pobierz .MP4</button>
+            <a href="link_do_pliku.mp4" download class="download-link">
+                <button class="download-btn">Pobierz .MP4</button>
+            </a>
         </div>
 
-        <div class="resource-card">
+        <div class="resource-card" data-category="muzyka">
             <span class="tag">Muzyka</span>
             <div class="wave-preview">
-                <div class="play-btn">▶</div>
+                <button class="play-btn" onclick="previewAudio('link_do_muzyki.mp3', this)">▶</button>
             </div>
             <div class="resource-info">
                 <h3>Lo-Fi Chill Beat</h3>
                 <p style="font-size: 0.8rem; opacity: 0.5;">Idealne podkład pod commentary.</p>
             </div>
-            <button class="download-btn">Pobierz .MP3</button>
+            <a href="link_do_pliku.mp3" download class="download-link">
+                <button class="download-btn">Pobierz .MP3</button>
+            </a>
         </div>
     </main>
+
+    <script>
+        // --- LOGIKA FILTROWANIA ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.resource-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Zmiana aktywnego przycisku
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                cards.forEach(card => {
+                    if (filterValue === 'wszystko' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // --- PROSTY PODGLĄD AUDIO ---
+        let currentAudio = null;
+        let currentBtn = null;
+
+        function previewAudio(url, btn) {
+            if (currentAudio && currentBtn === btn) {
+                currentAudio.pause();
+                currentAudio = null;
+                btn.innerText = "▶";
+                return;
+            }
+            
+            if (currentAudio) {
+                currentAudio.pause();
+                currentBtn.innerText = "▶";
+            }
+
+            currentAudio = new Audio(url);
+            currentBtn = btn;
+            currentAudio.play();
+            btn.innerText = "⏸";
+
+            currentAudio.onended = () => {
+                btn.innerText = "▶";
+                currentAudio = null;
+            };
+        }
+    </script>
 
 </body>
 </html>
