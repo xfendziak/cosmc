@@ -48,6 +48,31 @@
         }
         .back-link:hover { opacity: 1; transform: translateX(-5px); }
 
+        /* Wyszukiwarka */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        #effect-search {
+            width: 100%;
+            padding: 14px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        #effect-search:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+        }
+
         .filters {
             display: flex;
             justify-content: center;
@@ -166,6 +191,10 @@
         <h1>Montaż</h1>
         <p class="subtitle">Wszystko czego potrzebujesz do swojego kolejnego montażu.</p>
         
+        <div class="search-container">
+            <input type="text" id="effect-search" placeholder="Szukaj efektu (np. SFX 1, Muzyka...)...">
+        </div>
+
         <div class="filters">
             <button class="filter-btn active" data-filter="wszystko">Wszystko</button>
             <button class="filter-btn" data-filter="sfx">SFX</button>
@@ -196,338 +225,68 @@
             <div class="resource-info"><h3>SFX 3</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
             <a href="plik_3.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
         </div>
-        <div class="resource-card" data-category="sfx">
-            <span class="tag">SFX</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('link_sfx_4.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>SFX 4</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="plik_4.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="sfx">
-            <span class="tag">SFX</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('link_sfx_5.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>SFX 5</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="plik_5.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="sfx">
-            <span class="tag">SFX</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('link_sfx_6.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>SFX 6</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="plik_6.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="sfx">
-            <span class="tag">SFX</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('link_sfx_7.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>SFX 7</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="plik_7.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="sfx">
-            <span class="tag">SFX</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('link_sfx_8.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>SFX 8</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="plik_8.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="sfx">
-            <span class="tag">SFX</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('link_sfx_9.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>SFX 9</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="plik_9.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-
         <div class="resource-card" data-category="muzyka">
             <span class="tag">Muzyka</span>
             <div class="wave-preview"><button class="play-btn" onclick="previewAudio('m1.mp3', this)">▶</button></div>
             <div class="resource-info"><h3>Muzyka 1</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
             <a href="m1.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
         </div>
-        <div class="resource-card" data-category="muzyka">
-            <span class="tag">Muzyka</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('m2.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>Muzyka 2</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="m2.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="muzyka">
-            <span class="tag">Muzyka</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('m3.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>Muzyka 3</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="m3.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="muzyka">
-            <span class="tag">Muzyka</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('m4.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>Muzyka 4</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="m4.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="muzyka">
-            <span class="tag">Muzyka</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('m5.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>Muzyka 5</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="m5.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="muzyka">
-            <span class="tag">Muzyka</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('m6.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>Muzyka 6</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="m6.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="muzyka">
-            <span class="tag">Muzyka</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('m7.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>Muzyka 7</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="m7.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="muzyka">
-            <span class="tag">Muzyka</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('m8.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>Muzyka 8</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="m8.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-        <div class="resource-card" data-category="muzyka">
-            <span class="tag">Muzyka</span>
-            <div class="wave-preview"><button class="play-btn" onclick="previewAudio('m9.mp3', this)">▶</button></div>
-            <div class="resource-info"><h3>Muzyka 9</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="m9.mp3" download class="download-link"><button class="download-btn">Pobierz .MP3</button></a>
-        </div>
-
         <div class="resource-card" data-category="animacje">
             <span class="tag">Animacje</span>
             <div class="wave-preview"><span style="opacity:0.4; font-size:0.7rem;">VIDEO PREVIEW</span></div>
             <div class="resource-info"><h3>Animacja 1</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
             <a href="a1.mp4" download class="download-link"><button class="download-btn">Pobierz .MP4</button></a>
         </div>
-        <div class="resource-card" data-category="animacje">
-            <span class="tag">Animacje</span>
-            <div class="wave-preview"><span style="opacity:0.4; font-size:0.7rem;">VIDEO PREVIEW</span></div>
-            <div class="resource-info"><h3>Animacja 2</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="a2.mp4" download class="download-link"><button class="download-btn">Pobierz .MP4</button></a>
-        </div>
-        <div class="resource-card" data-category="animacje">
-            <span class="tag">Animacje</span>
-            <div class="wave-preview"><span style="opacity:0.4; font-size:0.7rem;">VIDEO PREVIEW</span></div>
-            <div class="resource-info"><h3>Animacja 3</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="a3.mp4" download class="download-link"><button class="download-btn">Pobierz .MP4</button></a>
-        </div>
-        <div class="resource-card" data-category="animacje">
-            <span class="tag">Animacje</span>
-            <div class="wave-preview"><span style="opacity:0.4; font-size:0.7rem;">VIDEO PREVIEW</span></div>
-            <div class="resource-info"><h3>Animacja 4</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="a4.mp4" download class="download-link"><button class="download-btn">Pobierz .MP4</button></a>
-        </div>
-        <div class="resource-card" data-category="animacje">
-            <span class="tag">Animacje</span>
-            <div class="wave-preview"><span style="opacity:0.4; font-size:0.7rem;">VIDEO PREVIEW</span></div>
-            <div class="resource-info"><h3>Animacja 5</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="a5.mp4" download class="download-link"><button class="download-btn">Pobierz .MP4</button></a>
-        </div>
-        <div class="resource-card" data-category="animacje">
-            <span class="tag">Animacje</span>
-            <div class="wave-preview"><span style="opacity:0.4; font-size:0.7rem;">VIDEO PREVIEW</span></div>
-            <div class="resource-info"><h3>Animacja 6</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="a6.mp4" download class="download-link"><button class="download-btn">Pobierz .MP4</button></a>
-        </div>
-        <div class="resource-card" data-category="animacje">
-            <span class="tag">Animacje</span>
-            <div class="wave-preview"><span style="opacity:0.4; font-size:0.7rem;">VIDEO PREVIEW</span></div>
-            <div class="resource-info"><h3>Animacja 7</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="a7.mp4" download class="download-link"><button class="download-btn">Pobierz .MP4</button></a>
-        </div>
-        <div class="resource-card" data-category="animacje">
-            <span class="tag">Animacje</span>
-            <div class="wave-preview"><span style="opacity:0.4; font-size:0.7rem;">VIDEO PREVIEW</span></div>
-            <div class="resource-info"><h3>Animacja 8</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="a8.mp4" download class="download-link"><button class="download-btn">Pobierz .MP4</button></a>
-        </div>
-        <div class="resource-card" data-category="animacje">
-            <span class="tag">Animacje</span>
-            <div class="wave-preview"><span style="opacity:0.4; font-size:0.7rem;">VIDEO PREVIEW</span></div>
-            <div class="resource-info"><h3>Animacja 9</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="a9.mp4" download class="download-link"><button class="download-btn">Pobierz .MP4</button></a>
-        </div>
-
         <div class="resource-card" data-category="fonty">
             <span class="tag">Fonty</span>
             <div class="wave-preview"><span style="font-weight:bold;font-size:1.2rem;">AaBb 1</span></div>
             <div class="resource-info"><h3>Font 1</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
             <a href="f1.txt" download class="download-link"><button class="download-btn">Pobierz .TXT</button></a>
         </div>
-        <div class="resource-card" data-category="fonty">
-            <span class="tag">Fonty</span>
-            <div class="wave-preview"><span style="font-weight:bold;font-size:1.2rem;">AaBb 2</span></div>
-            <div class="resource-info"><h3>Font 2</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="f2.txt" download class="download-link"><button class="download-btn">Pobierz .TXT</button></a>
-        </div>
-        <div class="resource-card" data-category="fonty">
-            <span class="tag">Fonty</span>
-            <div class="wave-preview"><span style="font-weight:bold;font-size:1.2rem;">AaBb 3</span></div>
-            <div class="resource-info"><h3>Font 3</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="f3.txt" download class="download-link"><button class="download-btn">Pobierz .TXT</button></a>
-        </div>
-        <div class="resource-card" data-category="fonty">
-            <span class="tag">Fonty</span>
-            <div class="wave-preview"><span style="font-weight:bold;font-size:1.2rem;">AaBb 4</span></div>
-            <div class="resource-info"><h3>Font 4</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="f4.txt" download class="download-link"><button class="download-btn">Pobierz .TXT</button></a>
-        </div>
-        <div class="resource-card" data-category="fonty">
-            <span class="tag">Fonty</span>
-            <div class="wave-preview"><span style="font-weight:bold;font-size:1.2rem;">AaBb 5</span></div>
-            <div class="resource-info"><h3>Font 5</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="f5.txt" download class="download-link"><button class="download-btn">Pobierz .TXT</button></a>
-        </div>
-        <div class="resource-card" data-category="fonty">
-            <span class="tag">Fonty</span>
-            <div class="wave-preview"><span style="font-weight:bold;font-size:1.2rem;">AaBb 6</span></div>
-            <div class="resource-info"><h3>Font 6</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="f6.txt" download class="download-link"><button class="download-btn">Pobierz .TXT</button></a>
-        </div>
-        <div class="resource-card" data-category="fonty">
-            <span class="tag">Fonty</span>
-            <div class="wave-preview"><span style="font-weight:bold;font-size:1.2rem;">AaBb 7</span></div>
-            <div class="resource-info"><h3>Font 7</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="f7.txt" download class="download-link"><button class="download-btn">Pobierz .TXT</button></a>
-        </div>
-        <div class="resource-card" data-category="fonty">
-            <span class="tag">Fonty</span>
-            <div class="wave-preview"><span style="font-weight:bold;font-size:1.2rem;">AaBb 8</span></div>
-            <div class="resource-info"><h3>Font 8</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="f8.txt" download class="download-link"><button class="download-btn">Pobierz .TXT</button></a>
-        </div>
-        <div class="resource-card" data-category="fonty">
-            <span class="tag">Fonty</span>
-            <div class="wave-preview"><span style="font-weight:bold;font-size:1.2rem;">AaBb 9</span></div>
-            <div class="resource-info"><h3>Font 9</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="f9.txt" download class="download-link"><button class="download-btn">Pobierz .TXT</button></a>
-        </div>
-
-        <div class="resource-card" data-category="loga">
-            <span class="tag">Loga</span>
-            <div class="wave-preview"><span style="opacity:0.4;">LOGO 1</span></div>
-            <div class="resource-info"><h3>Logo 1</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="l1.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="loga">
-            <span class="tag">Loga</span>
-            <div class="wave-preview"><span style="opacity:0.4;">LOGO 2</span></div>
-            <div class="resource-info"><h3>Logo 2</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="l2.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="loga">
-            <span class="tag">Loga</span>
-            <div class="wave-preview"><span style="opacity:0.4;">LOGO 3</span></div>
-            <div class="resource-info"><h3>Logo 3</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="l3.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="loga">
-            <span class="tag">Loga</span>
-            <div class="wave-preview"><span style="opacity:0.4;">LOGO 4</span></div>
-            <div class="resource-info"><h3>Logo 4</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="l4.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="loga">
-            <span class="tag">Loga</span>
-            <div class="wave-preview"><span style="opacity:0.4;">LOGO 5</span></div>
-            <div class="resource-info"><h3>Logo 5</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="l5.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="loga">
-            <span class="tag">Loga</span>
-            <div class="wave-preview"><span style="opacity:0.4;">LOGO 6</span></div>
-            <div class="resource-info"><h3>Logo 6</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="l6.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="loga">
-            <span class="tag">Loga</span>
-            <div class="wave-preview"><span style="opacity:0.4;">LOGO 7</span></div>
-            <div class="resource-info"><h3>Logo 7</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="l7.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="loga">
-            <span class="tag">Loga</span>
-            <div class="wave-preview"><span style="opacity:0.4;">LOGO 8</span></div>
-            <div class="resource-info"><h3>Logo 8</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="l8.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="loga">
-            <span class="tag">Loga</span>
-            <div class="wave-preview"><span style="opacity:0.4;">LOGO 9</span></div>
-            <div class="resource-info"><h3>Logo 9</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="l9.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-
         <div class="resource-card" data-category="zdjęcia">
             <span class="tag">Zdjęcia</span>
             <div class="wave-preview"><span style="opacity:0.4;">IMG 1</span></div>
             <div class="resource-info"><h3>Zdjęcie 1</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
             <a href="i1.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
         </div>
-        <div class="resource-card" data-category="zdjęcia">
-            <span class="tag">Zdjęcia</span>
-            <div class="wave-preview"><span style="opacity:0.4;">IMG 2</span></div>
-            <div class="resource-info"><h3>Zdjęcie 2</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="i2.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="zdjęcia">
-            <span class="tag">Zdjęcia</span>
-            <div class="wave-preview"><span style="opacity:0.4;">IMG 3</span></div>
-            <div class="resource-info"><h3>Zdjęcie 3</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="i3.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="zdjęcia">
-            <span class="tag">Zdjęcia</span>
-            <div class="wave-preview"><span style="opacity:0.4;">IMG 4</span></div>
-            <div class="resource-info"><h3>Zdjęcie 4</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="i4.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="zdjęcia">
-            <span class="tag">Zdjęcia</span>
-            <div class="wave-preview"><span style="opacity:0.4;">IMG 5</span></div>
-            <div class="resource-info"><h3>Zdjęcie 5</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="i5.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="zdjęcia">
-            <span class="tag">Zdjęcia</span>
-            <div class="wave-preview"><span style="opacity:0.4;">IMG 6</span></div>
-            <div class="resource-info"><h3>Zdjęcie 6</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="i6.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="zdjęcia">
-            <span class="tag">Zdjęcia</span>
-            <div class="wave-preview"><span style="opacity:0.4;">IMG 7</span></div>
-            <div class="resource-info"><h3>Zdjęcie 7</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="i7.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="zdjęcia">
-            <span class="tag">Zdjęcia</span>
-            <div class="wave-preview"><span style="opacity:0.4;">IMG 8</span></div>
-            <div class="resource-info"><h3>Zdjęcie 8</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="i8.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
-        <div class="resource-card" data-category="zdjęcia">
-            <span class="tag">Zdjęcia</span>
-            <div class="wave-preview"><span style="opacity:0.4;">IMG 9</span></div>
-            <div class="resource-info"><h3>Zdjęcie 9</h3><p style="font-size: 0.8rem; opacity: 0.5;">Opis zasobu.</p></div>
-            <a href="i9.png" download class="download-link"><button class="download-btn">Pobierz .PNG</button></a>
-        </div>
     </main>
 
     <script>
-        // --- LOGIKA FILTROWANIA ---
+        const searchInput = document.getElementById('effect-search');
         const filterBtns = document.querySelectorAll('.filter-btn');
+        const allCards = document.querySelectorAll('.resource-card');
 
+        let currentFilter = 'wszystko';
+
+        // Funkcja filtrująca
+        function updateDisplay() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            allCards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const category = card.getAttribute('data-category');
+                
+                const matchesFilter = (currentFilter === 'wszystko' || category === currentFilter);
+                const matchesSearch = title.includes(searchTerm);
+
+                if (matchesFilter && matchesSearch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Obsługa wyszukiwarki
+        searchInput.addEventListener('input', updateDisplay);
+
+        // Obsługa przycisków kategorii
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
-                const filterValue = btn.getAttribute('data-filter');
-                const allCards = document.querySelectorAll('.resource-card');
-
-                allCards.forEach(card => {
-                    if (filterValue === 'wszystko' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                currentFilter = btn.getAttribute('data-filter');
+                updateDisplay();
             });
         });
 
@@ -550,9 +309,9 @@
 
             currentAudio = new Audio(url);
             currentBtn = btn;
-            currentAudio.play();
             btn.innerText = "⏸";
-
+            
+            currentAudio.play();
             currentAudio.onended = () => {
                 btn.innerText = "▶";
                 currentAudio = null;
